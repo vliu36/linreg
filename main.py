@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+from linreg import linreg
 
 def main():
     readFile()
@@ -24,7 +26,16 @@ def main():
             else:
                 if input("Proceed with this selection (y/n)? ") != 'y':
                     continue
-            # TODO
+            equation = linreg(dataset[xCol].tolist(), dataset[yCol].tolist())
+            print(f"The line of best fit is y = {equation[0]}x{" + " if equation[1] >= 0 else " - "}{abs(equation[1])}")
+            if input("Plot (y/n)? ") == "n":
+                break
+            else:
+                fig, ax = plt.subplots()
+                ax.scatter(dataset[xCol].tolist(), dataset[yCol].tolist())
+                xGen = [i for i in range(int(min(dataset[xCol].tolist())), int(max(dataset[xCol].tolist())) + 2)]
+                ax.plot(xGen, list(map(lambda x : (equation[0] * x) + equation[1], xGen)), linewidth=2, color="r")
+                plt.show()
             break
         elif choice == "NEW":
             readFile()
@@ -54,7 +65,7 @@ def readFile():
         print("ERROR: File not found, please try again.")
         readFile()
 
-try:
-    main()
-except:
-    print("Unknown error occurred, please try again.")
+# try:
+main()
+# except:
+#     print("Unknown error occurred, please try again.")
