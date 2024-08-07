@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from linreg import linreg
+from linreg import *
 
 def main():
     readFile()
@@ -28,13 +28,17 @@ def main():
                     continue
             equation = linreg(dataset[xCol].tolist(), dataset[yCol].tolist())
             print(f"The line of best fit is y = {equation[0]}x{" + " if equation[1] >= 0 else " - "}{abs(equation[1])}")
-            if input("Plot (y/n)? ") == "n":
+            determination = eval(dataset[xCol].tolist(), dataset[yCol].tolist(), equation)
+            print(f"{determination * 100}% of the observed variation in {yCol} can be attributed to {xCol}.")
+            if input("Plot (y/n)? ") != "y":
                 break
             else:
                 fig, ax = plt.subplots()
                 ax.scatter(dataset[xCol].tolist(), dataset[yCol].tolist())
                 xGen = [i for i in range(int(min(dataset[xCol].tolist())), int(max(dataset[xCol].tolist())) + 2)]
                 ax.plot(xGen, list(map(lambda x : (equation[0] * x) + equation[1], xGen)), linewidth=2, color="r")
+                ax.set_xlabel(xCol)
+                ax.set_ylabel(yCol)
                 plt.show()
             break
         elif choice == "NEW":
