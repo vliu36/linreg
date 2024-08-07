@@ -9,15 +9,15 @@ def main():
         if choice == "VIEW":
             print(dataset)
         elif choice == "LINREG":
-            print("========================== ALL NUMERICAL COLUMNS ==========================")
+            print("========================== ALL VARIABLES ==========================")
             validColumns = dataset.select_dtypes(include="number").columns.tolist()
             print(validColumns)
             print()
-            yCol = input("Select the y-axis: ")
             xCol = input("Select the x-axis: ")
+            yCol = input("Select the y-axis: ")
             try:
                 if yCol in validColumns and xCol in validColumns:
-                    print(dataset[[yCol, xCol]])
+                    print(dataset[[xCol, yCol]])
                 else:
                     raise KeyError
             except KeyError:
@@ -26,10 +26,13 @@ def main():
             else:
                 if input("Proceed with this selection (y/n)? ") != 'y':
                     continue
-            equation = linreg(dataset[xCol].tolist(), dataset[yCol].tolist())
-            print(f"The line of best fit is y = {equation[0]}x{" + " if equation[1] >= 0 else " - "}{abs(equation[1])}")
-            determination = eval(dataset[xCol].tolist(), dataset[yCol].tolist(), equation)
-            print(f"{determination * 100}% of the observed variation in {yCol} can be attributed to {xCol}.")
+            try:
+                equation = linreg(dataset[xCol].tolist(), dataset[yCol].tolist())
+                print(f"The line of best fit is y = {equation[0]}x{" + " if equation[1] >= 0 else " - "}{abs(equation[1])}")
+                determination = eval(dataset[xCol].tolist(), dataset[yCol].tolist(), equation)
+                print(f"{determination * 100}% of the observed variation in {yCol} can be attributed to {xCol}.")
+            except TypeError:
+                print("ERROR: linreg() and eval() expects list and tuple types.")
             if input("Plot (y/n)? ") != "y":
                 break
             else:
@@ -69,7 +72,7 @@ def readFile():
         print("ERROR: File not found, please try again.")
         readFile()
 
-# try:
-main()
-# except:
-#     print("Unknown error occurred, please try again.")
+try:
+    main()
+except:
+    print("Unknown error occurred, please try again.")
