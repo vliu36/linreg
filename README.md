@@ -6,10 +6,10 @@ Clone this repository to your local machine:
 1. Start the program by running `main.py`
 2. Enter the file location of your `.csv` file
 3. From there, a menu of options will appear:
-        Enter **VIEW** to view an abbreviated form of the selected dataset 
-        Enter **LINREG** to calculate and graph a linear regression line
-        Enter **NEW** to select another dataset
-        Enter **EXIT** to exit the program
+        Enter **VIEW** to view an abbreviated form of the selected dataset.
+        Enter **LINREG** to calculate and graph a linear regression line.
+        Enter **NEW** to select another dataset.
+        Enter **EXIT** to exit the program.
 
 To proceed with calculating the linear regression line, enter LINREG, then:
 1. Input the x and y variables (case-sensitive)
