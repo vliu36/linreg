@@ -5,11 +5,11 @@ Python project that calculates and plots linear regression
 Clone this repository to your local machine:
 1. Start the program by running `main.py`
 2. Enter the file location of your `.csv` file
-3. From there, a menu of options will appear:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter **VIEW** to view an abbreviated form of the selected dataset.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter **LINREG** to calculate and graph a linear regression line.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter **NEW** to select another dataset.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter **EXIT** to exit the program.
+3. From there, a menu of options will appear:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter **VIEW** to view an abbreviated form of the selected dataset.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter **LINREG** to calculate and graph a linear regression line.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter **NEW** to select another dataset.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter **EXIT** to exit the program.<br />
 
 To proceed with calculating the linear regression line, enter LINREG, then:
 1. Input the x and y variables (case-sensitive)
